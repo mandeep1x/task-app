@@ -9,6 +9,6 @@ tasks = [
 if user_task == "":
     print("Task cannot be empty")
 else:
-    tasks.append(user_task)
+    tasks.append(user_task.strip())
     for each_item in tasks:
         print(each_item)
