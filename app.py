@@ -1,4 +1,5 @@
 user_task = input("Type your favourite task: ")
+clean_task = user_task.strip()
 
 tasks = [
     "I have a Laptop",
@@ -6,9 +7,9 @@ tasks = [
     "I also have a workspace for coding in my home"
 ]
 
-if user_task == "":
+if clean_task == "":
     print("Task cannot be empty")
 else:
-    tasks.append(user_task.strip())
+    tasks.append(clean_task)
     for each_item in tasks:
         print(each_item)
