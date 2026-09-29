@@ -1,8 +1,4 @@
-# print("Hello World")
-
-# task1 = "I am working on task-app project started from today and some minutes ago I were working " \
-# "on github making there new repository"
-# print(task1)
+user_task = input("Type your favourite task: ")
 
 tasks = [
     "I have a Laptop",
@@ -10,5 +6,6 @@ tasks = [
     "I also have a workspace for coding in my home"
 ]
 
-for each_task in tasks:
-    print(each_task)
+tasks.append(user_task)
+for each_item in tasks:
+    print(each_item)
