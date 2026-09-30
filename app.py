@@ -11,5 +11,5 @@ if clean_task == "":
     print("Task cannot be empty")
 else:
     tasks.append(clean_task)
-    for each_item in tasks:
-        print(each_item)
+    for number, task in enumerate (tasks, start= 1):
+        print(number, task)
