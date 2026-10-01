@@ -4,9 +4,6 @@ links = {
     "c" : "https://www.facebook.com"
 }
 
-for each_key, each_value in links.items():
-    print(each_key, each_value)
-
 long_link= input("Type url link of any website: ")
 clean_long= long_link.strip()
 
@@ -19,7 +16,8 @@ else:
     for each_key, each_value in links.items():
         print(each_key, each_value)
 
-
-
-
-    
+choose_url= input("Choose the index name of URL: ")
+if choose_url in links:
+    print(choose_url)
+else:
+    print("Not found")
