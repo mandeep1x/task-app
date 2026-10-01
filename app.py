@@ -18,13 +18,18 @@ else:
     count_task = len(tasks)
     print(f"We have {count_task} tasks in the list")
 
-    done_number= int(input("Type completed task number: "))
+    try:
+        done_number= int(input("Type completed task number: "))
+        if done_number > count_task or done_number < 1:
+            print("Try again This number does not exist")
     
-    if done_number > count_task or done_number < 1:
-        print("Try again This number does not exist")
-
-    else:
-        print("Completed Task:", tasks.pop(done_number - 1), end= "\n")
-        print("Remaining tasks list\n")
-        for number, task in enumerate (tasks, start= 1):
+        else:
+            print("Completed Task:", tasks.pop(done_number - 1), end= "\n")
+            print("Remaining tasks list\n")
+            for number, task in enumerate (tasks, start= 1):
                 print(number, task)
+
+    except ValueError:
+         print("Please fill the right number")
+
+    
