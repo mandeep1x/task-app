@@ -1,6 +1,7 @@
 links = {
     "a" : "https://youtube.com/long-video-link",
-    "b" : "https://www.youtube.com/@Apple"
+    "b" : "https://www.youtube.com/@Apple",
+    "c" : "https://www.facebook.com"
 }
 
 for each_key, each_value in links.items():
@@ -12,8 +13,13 @@ clean_long= long_link.strip()
 if clean_long == "":
     print("Link cannot be empty")
 else:
-    links["c"] = clean_long
+    count = len(links)
+    auto_number = f"s{count + 1}"
+    links[auto_number] = clean_long
     for each_key, each_value in links.items():
         print(each_key, each_value)
+
+
+
 
     
