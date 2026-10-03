@@ -18,6 +18,6 @@ else:
 
 choose_url= input("Choose the index name of URL: ")
 if choose_url in links:
-    print(choose_url)
+    print(choose_url, links[choose_url])
 else:
     print("Not found")
