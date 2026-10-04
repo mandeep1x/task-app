@@ -1,9 +1,14 @@
 {
-    "name": "Mandeep",
-    "age": 24,
-    "Country": "India",
+    "name": "Mandeep singh",
+    "age": "24",
+    "country": "India",
+    "Graduation": "BCA",
     "skills": [
-        "Python",
-        "Data Analysis"
-    ]
+        "python",
+        "advance python",
+        "mysql",
+        "postgresql",
+        "django"
+    ],
+    "college": "Guru gobind singh college"
 }
