@@ -6,7 +6,8 @@ def show_task(task_list):
     print("\n-----Current tasks-----")
     for number, task in enumerate (task_list, start= 1):
         print(f"{number}. {task}")
-    print(f"Total Tasks {len(task_list)}")
+    print(f"Total Tasks - {len(task_list)}")
+
 
 def add_task(task_list):
     user_task = input("\nType new task name: ")
@@ -17,8 +18,8 @@ def add_task(task_list):
     else:
         task_list.append(clean_task)
         print(f"Success: {clean_task} added")
-        
 
+        
 def complete_task(task_list):
     if not task_list:
         print("No one task is completed")
@@ -40,8 +41,12 @@ tasks = ["Make a sunday plan for trip",
     "Need to work on Industry standard Python projects",
     "Think about overall bad habits and make a to-do list"]
 
-show_task(tasks)
-add_task(tasks)
-show_task(tasks)
-complete_task(tasks)
-show_task(tasks)
+
+while True:
+    print("\n---------You have four choices---------")
+    print("1. Show List")
+    print("2. Add Task")
+    print("3. Complete Task")
+    print("4. Exit Choice")
+
+
