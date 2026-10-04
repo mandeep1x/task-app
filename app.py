@@ -1,4 +1,5 @@
 import json
+
 def show_task(task_list):
     if not task_list:
         print("Task list is empty")
@@ -8,6 +9,10 @@ def show_task(task_list):
     for number, task in enumerate (task_list, start= 1):
         print(f"{number}. {task}")
     print(f"Total Tasks - {len(task_list)}")
+    
+    with open("tasks.json", "r") as file:
+        reading_task = json.load(file)
+    print(reading_task)
 
 
 def add_task(task_list):
@@ -19,6 +24,9 @@ def add_task(task_list):
     else:
         task_list.append(clean_task)
         print(f"Success: {clean_task} added")
+
+    with open("tasks.json", "a") as file:
+        json.dump(task_list, file, indent= 4)
 
         
 def complete_task(task_list):
