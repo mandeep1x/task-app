@@ -49,4 +49,21 @@ while True:
     print("3. Complete Task")
     print("4. Exit Choice")
 
-
+    try:
+        user_choice= int(input("Choose one option in (1-4): "))
+        if not user_choice:
+            print("Please type something before proceed")
+        elif user_choice > 4 or user_choice < 1:
+            print("Please type the Correct value in 1 to 4")
+        elif user_choice == 1:
+            show_task(tasks)
+        elif user_choice == 2:
+            add_task(tasks)
+        elif user_choice == 3:
+            complete_task(tasks)
+        elif user_choice == 4:
+            print("Exit the Options")
+            break
+        
+    except ValueError:
+        print("Type the Right Value (numbers only)\n")
