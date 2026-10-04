@@ -1,0 +1,9 @@
+{
+    "name": "Mandeep",
+    "age": 24,
+    "Country": "India",
+    "skills": [
+        "Python",
+        "Data Analysis"
+    ]
+}
