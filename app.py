@@ -1,40 +1,47 @@
-def show_tasks():
-    user_task = input("Type new task name: ")
+def show_task(task_list):
+    if not task_list:
+        print("Task list is empty")
+        return
+
+    print("\n-----Current tasks-----")
+    for number, task in enumerate (task_list, start= 1):
+        print(f"{number}. {task}")
+    print(f"Total Tasks {len(task_list)}")
+
+def add_task(task_list):
+    user_task = input("\nType new task name: ")
     clean_task = user_task.strip()
 
     if clean_task == "":
         print("Task cannot be empty")
     else:
-        tasks.append(clean_task)
-        for number, task in enumerate (tasks, start= 1):
-            print(number, task)
+        task_list.append(clean_task)
+        print(f"Success: {clean_task} added")
         
-        count_task = len(tasks)
-        print(f"We have {count_task} tasks in the list")
 
-        try:
-            done_number= int(input("Type completed task number: "))
-            if done_number > count_task or done_number < 1:
-                print("Try again This number does not exist")
-        
-            else:
-                print("Completed Task:", tasks.pop(done_number - 1), end= "\n")
-                print("Remaining tasks list\n")
-                for number, task in enumerate (tasks, start= 1):
-                    print(number, task)
+def complete_task(task_list):
+    if not task_list:
+        print("No one task is completed")
+        return
+    
+    try:
 
-        except ValueError:
-            print("Please fill the right number")
+        complete= int(input("\nType completed task number: "))
+        if complete > len(task_list) or complete < 1:
+            print("Try again This number does not exist")
+        else:
+            print("Completed Task:", task_list.pop(complete - 1))
+    
+    except ValueError:
+        print("Please fill the right number")
+
 
 tasks = ["Make a sunday plan for trip",
     "Need to work on Industry standard Python projects",
     "Think about overall bad habits and make a to-do list"]
 
-show_tasks()
-
-# show task
-# add task
-# complete task
-
-# task_list parameter name for every function
-    
+show_task(tasks)
+add_task(tasks)
+show_task(tasks)
+complete_task(tasks)
+show_task(tasks)
