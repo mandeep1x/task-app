@@ -1,15 +1,20 @@
 import json
 import os
+from dotenv import load_dotenv
 
-FILE_NAME = "tasks.json"
+load_dotenv()
+file_name = os.getenv("FILE_NAME")
+
+if not file_name:
+    file_name = "tasks.json"
 
 
 def load_tasks():
-    if not os.path.exists(FILE_NAME):
+    if not os.path.exists(file_name) or os.path.getsize(file_name) == 0:
         return []
 
     try:
-        with open(FILE_NAME, "r") as file:
+        with open(file_name, "r") as file:
             return json.load(file)
 
     except FileNotFoundError:
@@ -17,7 +22,7 @@ def load_tasks():
 
 
 def save_tasks(task_list):
-    with open(FILE_NAME, "w") as file:
+    with open(file_name, "w") as file:
         json.dump(task_list, file, indent=4)
 
 
@@ -64,8 +69,7 @@ def complete_task(task_list):
 
 tasks = load_tasks()
 
-if not load_tasks():
-
+if not tasks:
     tasks = ["Make a sunday plan for trip",
              "Need to work on Industry standard Python projects",
              "Think about overall bad habits and make a to-do list"]
