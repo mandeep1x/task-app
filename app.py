@@ -1,4 +1,25 @@
 import json
+import os
+
+FILE_NAME = "tasks.json"
+
+
+def load_tasks():
+    if not os.path.exists(FILE_NAME):
+        return []
+
+    try:
+        with open(FILE_NAME, "r") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        return []
+
+
+def save_tasks(task_list):
+    with open(FILE_NAME, "w") as file:
+        json.dump(task_list, file, indent=4)
+
 
 def show_task(task_list):
     if not task_list:
@@ -6,13 +27,9 @@ def show_task(task_list):
         return
 
     print("\n-----Current tasks-----")
-    for number, task in enumerate (task_list, start= 1):
+    for number, task in enumerate(task_list, start=1):
         print(f"{number}. {task}")
     print(f"Total Tasks - {len(task_list)}")
-    
-    with open("tasks.json", "r") as file:
-        reading_task = json.load(file)
-    print(reading_task)
 
 
 def add_task(task_list):
@@ -23,33 +40,37 @@ def add_task(task_list):
         print("Task cannot be empty")
     else:
         task_list.append(clean_task)
+        save_tasks(task_list)
         print(f"Success: {clean_task} added")
 
-    with open("tasks.json", "a") as file:
-        json.dump(task_list, file, indent= 4)
 
-        
 def complete_task(task_list):
     if not task_list:
         print("No one task is completed")
         return
-    
+
     try:
 
-        complete= int(input("\nType completed task number: "))
+        complete = int(input("\nType completed task number: "))
         if complete > len(task_list) or complete < 1:
             print("Try again This number does not exist")
         else:
             print("Completed Task:", task_list.pop(complete - 1))
-    
+            save_tasks(task_list)
+
     except ValueError:
         print("Please fill the right number")
 
 
-tasks = ["Make a sunday plan for trip",
-    "Need to work on Industry standard Python projects",
-    "Think about overall bad habits and make a to-do list"]
+tasks = load_tasks()
 
+if not load_tasks():
+
+    tasks = ["Make a sunday plan for trip",
+             "Need to work on Industry standard Python projects",
+             "Think about overall bad habits and make a to-do list"]
+
+    save_tasks(tasks)
 
 while True:
     print("\n---------You have four choices---------")
@@ -59,7 +80,7 @@ while True:
     print("4. Exit Choice")
 
     try:
-        user_choice= int(input("Choose one option in (1-4): "))
+        user_choice = int(input("Choose one option in (1-4): "))
         if not user_choice:
             print("Please type something before proceed")
         elif user_choice > 4 or user_choice < 1:
@@ -73,6 +94,6 @@ while True:
         elif user_choice == 4:
             print("Exit the Options")
             break
-        
+
     except ValueError:
         print("Type the Right Value (numbers only)\n")
