@@ -1,3 +1,14 @@
+"""
+
+TODO: REFACTOR TO OBJECT-ORIENTED PROGRAMMING (OOP)
+Next Steps for Implementation:
+1. Create a `TaskManager` or `TodoList` class.
+2. Initialize the class with the task list (`self.tasks`) and `file_name`.
+3. Move all the standalone functions inside the class as methods.
+4. Convert procedural data updates to use class attributes (`self`).
+
+"""
+
 import json
 import os
 from dotenv import load_dotenv
